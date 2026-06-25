@@ -110,6 +110,7 @@
     <Compile Include="conversation_memory.cs" />
     <Compile Include="interest_manager.cs" />
     <Compile Include="message_display.cs" />
+    <Compile Include="nlp_processor.cs" />
     <Compile Include="quiz_manager.cs" />
     <Compile Include="respond.cs" />
     <Compile Include="special_character.cs" />
