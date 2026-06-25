@@ -104,6 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="activity_log.cs" />
     <Compile Include="auto_interest.cs" />
     <Compile Include="chatbot.cs" />
     <Compile Include="conversation_memory.cs" />
