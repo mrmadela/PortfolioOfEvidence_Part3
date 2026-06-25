@@ -104,6 +104,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="auto_interest.cs" />
+    <Compile Include="chatbot.cs" />
+    <Compile Include="conversation_memory.cs" />
+    <Compile Include="interest_manager.cs" />
+    <Compile Include="message_display.cs" />
+    <Compile Include="quiz_manager.cs" />
+    <Compile Include="special_character.cs" />
+    <Compile Include="user_name.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
