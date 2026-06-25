@@ -5,8 +5,1174 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PortfolioOfEvidence_Part3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+                Title="MainWindow" Height="620" Width="950">
     <Grid>
-        
+        <!-- Start of Parent Grid -->
+
+        <!-- Background color grid -->
+        <Grid.Background>
+            <!-- start of color grid -->
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#1B1038" Offset="0"/>
+                <GradientStop Color="#05071F" Offset="0.5"/>
+                <GradientStop Color="#0B1235" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <!-- end of color grid-->
+
+        <!-- grid for welcome page with logo -->
+        <Grid
+            x:Name="greet_grid"
+            Visibility="Visible"
+            >
+            <!-- start of logo grid -->
+
+            <!-- StackPanel for logo and app name to stay together -->
+            <StackPanel
+                Height="250"
+                Width="300"
+                Margin="0,0,0,150"
+                >
+                <!-- start of logo stackpanel -->
+
+                <!-- display logo -->
+                <Image
+                    Source="/Logo.jpg"
+                    Height="120"
+                    Width="300"
+                    Margin="0,0,0,10"
+                />
+
+                <!-- Textblock for App name -->
+                <TextBlock
+                    FontSize="50"
+                    FontWeight="Bold"
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Center"
+                    FontFamily="Segoe UI">
+
+                    <Run
+                        Text="Chat"
+                        Foreground="White"
+                    />
+
+                    <Run
+                        Text="Bot"
+                        Foreground="DeepSkyBlue"
+                    />
+                </TextBlock>
+                <!-- end of textblock app name-->
+
+                <!-- cyber Assistant -->
+                <TextBlock
+                   Text="CYBER ASSISTANT"
+                   FontSize="14"
+                   Foreground="#B8B8C5"
+                   HorizontalAlignment="Center"
+                   FontFamily="Segoe UI"
+                />
+
+            </StackPanel>
+            <!-- end of logo stackpanel-->
+
+            <!-- grid for Welcome message -->
+            <Grid
+                x:Name="welcome_grid"
+                Height="150"
+                Width="350"
+                Margin="0,250,0,0"
+                Visibility="Visible"
+                >
+                <!-- start of welcome grid -->
+
+                <!-- background border -->
+                <Border
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2"
+                    >
+                    <!-- start of border background-->
+
+                    <!-- stackpanel for content inside the background border -->
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        >
+                        <!-- start of content stackpanel -->
+
+                        <!-- welcome text -->
+                        <TextBlock
+                            Text="Welcoming you..."
+                            Foreground="#B8B8C5"
+                            FontSize="24"
+                            FontWeight="SemiBold"
+                            FontFamily="Segoe UI Light"
+                            Margin="0,10,0,20"
+                            HorizontalAlignment="Center"
+                        />
+
+                        <!-- button to start the AI chat -->
+                        <Button
+                            Width="180"
+                            Height="50"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="start_app">
+
+                            <!-- button background color -->
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#1E3A8A" Offset="0"/>
+                                    <GradientStop Color="#2563EB" Offset="0.5"/>
+                                    <GradientStop Color="#38BDF8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+
+                                        <TextBlock
+                                            Text="Start App"
+                                            FontFamily="Segoe UI"
+                                            FontSize="18"
+                                            Foreground="White"
+                                            FontWeight="SemiBold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                        />
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                    </StackPanel>
+                    <!-- end of content stackpanel -->
+
+                </Border>
+                <!-- end of border background -->
+
+            </Grid>
+            <!-- end of welcome grid -->
+
+        </Grid>
+        <!-- end of logo grid -->
+
+
+
+        <!-- grid to prompt the user for name -->
+        <Grid
+            x:Name="name_grid"
+            Height="250"
+            Width="600"
+            Visibility="Hidden"
+            >
+            <!-- start of askname_grid -->
+
+            <!-- stackpanel to keep textbox and the button together -->
+            <StackPanel>
+
+                <!-- background border -->
+                <Border
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2">
+
+                    <!-- StackPanel for the textblock and textbox border-->
+                    <StackPanel
+                        Height="220"
+                        >
+
+                        <!-- question title -->
+                        <TextBlock
+                            Text="Enter Your Name"
+                            FontSize="26"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            FontFamily="Segoe UI"
+                            Margin="0,0,0,20"
+                            HorizontalAlignment="Center"
+                        />
+
+                        <!-- textbox in a border -->
+                        <Border
+                            Height="50"
+                            Width="500"
+                            CornerRadius="15"
+                            Background="#2A2A40"
+                            BorderBrush="#38BDF8"
+                            BorderThickness="1.5"
+                            Margin="0,0,0,25">
+
+                            <TextBox
+                                x:Name="user_name"
+                                Width="300"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Foreground="White"
+                                FontSize="18"
+                                FontFamily="Segoe UI"
+                                CaretBrush="White"
+                            />
+
+                        </Border>
+
+                        <!-- submit the name button -->
+                        <Button
+                            Height="45"
+                            Width="180"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="submit_name">
+
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#2563EB" Offset="0"/>
+                                    <GradientStop Color="#38BDF8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="18"
+                                        Background="{TemplateBinding Background}">
+
+                                        <TextBlock
+                                            Text="Continue"
+                                            Foreground="White"
+                                            FontSize="18"
+                                            FontWeight="SemiBold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                        />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <!-- end of continue button -->
+
+                    </StackPanel>
+                    <!-- end of textblock and textbox -->
+
+                </Border>
+                <!-- end of askname grid -->
+
+            </StackPanel>
+            <!-- end of stackpanel of askname grid -->
+
+        </Grid>
+        <!-- end of askname_grid -->
+
+
+
+        <!-- grid to start conversation with the chatbot -->
+        <Grid
+            x:Name="chatting_grid"
+            Visibility="Hidden"
+            >
+            <!-- start of chatting grid -->
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- TAB BUTTONS ROW - NEW FOR PART 3                   -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <Border
+                Height="50"
+                VerticalAlignment="Top"
+                Background="#12122A"
+                BorderBrush="DeepSkyBlue"
+                BorderThickness="0,0,0,1"
+                >
+                <!-- start of tab bar border -->
+
+                <StackPanel
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    >
+                    <!-- start of tab stackpanel -->
+
+                    <!-- Chat Tab Button -->
+                    <Button
+                        x:Name="tab_chat"
+                        Content="💬  Chat"
+                        Width="150"
+                        Height="38"
+                        Margin="5,0"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="tab_chat_click"
+                        Background="#1E3A8A"
+                        Foreground="White"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="8,4">
+                                    <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                                               FontWeight="{TemplateBinding FontWeight}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Task Manager Tab Button -->
+                    <Button
+                        x:Name="tab_tasks"
+                        Content="📋  Task Manager"
+                        Width="160"
+                        Height="38"
+                        Margin="5,0"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="tab_tasks_click"
+                        Background="Transparent"
+                        Foreground="#B8B8C5"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="8,4">
+                                    <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                                               FontWeight="{TemplateBinding FontWeight}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Quiz Tab Button -->
+                    <Button
+                        x:Name="tab_quiz"
+                        Content="🎮  Cyber Quiz"
+                        Width="150"
+                        Height="38"
+                        Margin="5,0"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="tab_quiz_click"
+                        Background="Transparent"
+                        Foreground="#B8B8C5"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="8,4">
+                                    <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                                               FontWeight="{TemplateBinding FontWeight}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <!-- Activity Log Tab Button -->
+                    <Button
+                        x:Name="tab_log"
+                        Content="📜  Activity Log"
+                        Width="160"
+                        Height="38"
+                        Margin="5,0"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="tab_log_click"
+                        Background="Transparent"
+                        Foreground="#B8B8C5"
+                        FontFamily="Segoe UI"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="8,4">
+                                    <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}"
+                                               FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"
+                                               FontWeight="{TemplateBinding FontWeight}"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+                <!-- end of tab stackpanel -->
+
+            </Border>
+            <!-- end of tab bar border -->
+
+
+            <!-- PANEL: CHAT  - original chatting_grid content -->
+            <Grid
+                x:Name="panel_chat"
+                Margin="0,55,0,0"
+                Visibility="Visible"
+                >
+                <!-- start of chat panel -->
+
+                <!-- Main chatting container - SAME AS YOUR ORIGINAL -->
+                <Border
+                    Height="500"
+                    Width="890"
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2"
+                    Padding="15"
+                    >
+                    <!-- start of main border -->
+
+                    <!-- Main content grid -->
+                    <Grid x:Name="content_grid">
+
+                        <!-- ListView to display chats -->
+                        <ListView
+                            x:Name="chats"
+                            Height="390"
+                            Margin="0,0,0,50"
+                            Background="#0B1235"
+                            BorderBrush="DeepSkyBlue"
+                            BorderThickness="1"
+                            Foreground="White"
+                            FontFamily="Segoe UI"
+                            >
+                            <!-- start of listview -->
+                        </ListView>
+                        <!-- end of listview -->
+
+                        <!-- Question textbox -->
+                        <TextBox
+                            x:Name="question"
+                            Height="50"
+                            Width="650"
+                            Margin="0,410,300,0"
+                            VerticalAlignment="Top"
+                            FontSize="14"
+                            FontFamily="Segoe UI"
+                            Foreground="White"
+                            Background="#0B1235"
+                            BorderBrush="DeepSkyBlue"
+                            BorderThickness="2"
+                            CaretBrush="White"
+                            Padding="15,10"
+                            TextWrapping="Wrap"
+                            />
+
+                        <!-- Send button -->
+                        <Button
+                            Height="50"
+                            Width="180"
+                            Margin="650,410,0,0"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Click="send"
+                            >
+                            <!-- start of send button -->
+
+                            <!-- Button background -->
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#1E3A8A" Offset="0"/>
+                                    <GradientStop Color="#2563EB" Offset="0.5"/>
+                                    <GradientStop Color="#38BDF8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+
+                            <!-- Rounded button -->
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        CornerRadius="18"
+                                        Background="{TemplateBinding Background}"
+                                        >
+                                        <TextBlock
+                                            Text="Send Message"
+                                            FontFamily="Segoe UI"
+                                            FontSize="16"
+                                            Foreground="White"
+                                            FontWeight="SemiBold"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        <!-- end of send button -->
+
+                    </Grid>
+                    <!-- end of content grid -->
+
+                </Border>
+                <!-- end of main border-->
+
+            </Grid>
+            <!-- end of chat panel -->
+
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- PANEL: TASK MANAGER - NEW FOR PART 3               -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <Grid
+                x:Name="panel_tasks"
+                Margin="0,55,0,0"
+                Visibility="Collapsed"
+                >
+                <!-- start of task panel -->
+
+                <Border
+                    Height="500"
+                    Width="880"
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2"
+                    Padding="15"
+                    >
+                    <!-- start of task border -->
+
+                    <Grid>
+                        <!-- start of task content grid -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- LEFT: Add Task Form -->
+                        <Border
+                            Grid.Column="0"
+                            CornerRadius="15"
+                            Background="#12122A"
+                            BorderBrush="#38BDF8"
+                            BorderThickness="1"
+                            Padding="15"
+                            Margin="0,0,10,0"
+                            >
+                            <!-- start of form border -->
+
+                            <StackPanel>
+                                <!-- start of form stackpanel -->
+
+                                <TextBlock
+                                    Text="Add New Task"
+                                    FontSize="18"
+                                    FontWeight="Bold"
+                                    Foreground="DeepSkyBlue"
+                                    FontFamily="Segoe UI"
+                                    Margin="0,0,0,15"
+                                />
+
+                                <!-- Title label -->
+                                <TextBlock Text="Title" Foreground="#B8B8C5" FontSize="12" Margin="0,0,0,4"/>
+
+                                <!-- Title textbox border -->
+                                <Border
+                                    CornerRadius="10"
+                                    Background="#2A2A40"
+                                    BorderBrush="#38BDF8"
+                                    BorderThickness="1.5"
+                                    Margin="0,0,0,12"
+                                    >
+                                    <TextBox
+                                        x:Name="task_title"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="13"
+                                        Padding="8,6"
+                                        CaretBrush="White"
+                                    />
+                                </Border>
+
+                                <!-- Description label -->
+                                <TextBlock Text="Description" Foreground="#B8B8C5" FontSize="12" Margin="0,0,0,4"/>
+
+                                <!-- Description textbox border -->
+                                <Border
+                                    CornerRadius="10"
+                                    Background="#2A2A40"
+                                    BorderBrush="#38BDF8"
+                                    BorderThickness="1.5"
+                                    Margin="0,0,0,12"
+                                    >
+                                    <TextBox
+                                        x:Name="task_desc"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="13"
+                                        Padding="8,6"
+                                        Height="70"
+                                        TextWrapping="Wrap"
+                                        AcceptsReturn="True"
+                                        CaretBrush="White"
+                                    />
+                                </Border>
+
+                                <!-- Reminder label -->
+                                <TextBlock Text="Reminder (optional)" Foreground="#B8B8C5" FontSize="12" Margin="0,0,0,4"/>
+
+                                <!-- Reminder textbox border -->
+                                <Border
+                                    CornerRadius="10"
+                                    Background="#2A2A40"
+                                    BorderBrush="#38BDF8"
+                                    BorderThickness="1.5"
+                                    Margin="0,0,0,18"
+                                    >
+                                    <TextBox
+                                        x:Name="task_reminder"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        FontSize="13"
+                                        Padding="8,6"
+                                        CaretBrush="White"
+                                    />
+                                </Border>
+
+                                <!-- Add Task button -->
+                                <Button
+                                    Height="42"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Click="add_task_click"
+                                    >
+                                    <Button.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="#1E3A8A" Offset="0"/>
+                                            <GradientStop Color="#38BDF8" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="12" Background="{TemplateBinding Background}">
+                                                <TextBlock Text="➕  Add Task" FontFamily="Segoe UI" FontSize="15"
+                                                           Foreground="White" FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                            </StackPanel>
+                            <!-- end of form stackpanel -->
+
+                        </Border>
+                        <!-- end of form border -->
+
+                        <!-- RIGHT: Task List -->
+                        <Grid Grid.Column="1">
+                            <!-- start of right grid -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Text="My Tasks"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Foreground="DeepSkyBlue"
+                                FontFamily="Segoe UI"
+                                Margin="5,0,0,10"
+                            />
+
+                            <!-- Task ListView -->
+                            <ListView
+                                x:Name="task_list"
+                                Grid.Row="1"
+                                Background="#0B1235"
+                                BorderBrush="DeepSkyBlue"
+                                BorderThickness="1"
+                                Foreground="White"
+                                FontFamily="Segoe UI"
+                                FontSize="13"
+                            />
+
+                            <!-- Action buttons -->
+                            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+
+                                <Button
+                                    Content="✅ Complete"
+                                    Width="130" Height="38"
+                                    Margin="0,0,10,0"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Click="complete_task_click"
+                                    >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#1E3A8A"/>
+                                    </Button.Background>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                                <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                           FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                                <Button
+                                    Content="🗑 Delete"
+                                    Width="110" Height="38"
+                                    Margin="0,0,10,0"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Click="delete_task_click"
+                                    >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#1E3A8A"/>
+                                    </Button.Background>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                                <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                           FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                                <Button
+                                    Content="🔄 Refresh"
+                                    Width="110" Height="38"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    Click="refresh_tasks_click"
+                                    >
+                                    <Button.Background>
+                                        <SolidColorBrush Color="#1E3A8A"/>
+                                    </Button.Background>
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                                <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                           FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+
+                            </StackPanel>
+                            <!-- end of action buttons -->
+
+                        </Grid>
+                        <!-- end of right grid -->
+
+                    </Grid>
+                    <!-- end of task content grid -->
+
+                </Border>
+                <!-- end of task border -->
+
+            </Grid>
+            <!-- end of task panel -->
+
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- PANEL: CYBER QUIZ - NEW FOR PART 3                 -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <Grid
+                x:Name="panel_quiz"
+                Margin="0,55,0,0"
+                Visibility="Collapsed"
+                >
+                <!-- start of quiz panel -->
+
+                <Border
+                    Height="500"
+                    Width="880"
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2"
+                    Padding="25"
+                    >
+                    <!-- start of quiz border -->
+
+                    <Grid>
+                        <!-- start of quiz content grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Header row -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,12">
+                            <TextBlock
+                                Text="🎮  Cybersecurity Quiz"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Foreground="DeepSkyBlue"
+                                FontFamily="Segoe UI"
+                            />
+                            <TextBlock
+                                x:Name="quiz_score_label"
+                                Text="  |  Score: 0"
+                                FontSize="16"
+                                Foreground="#B8B8C5"
+                                VerticalAlignment="Bottom"
+                                Margin="10,0,0,2"
+                            />
+                        </StackPanel>
+
+                        <!-- Progress bar -->
+                        <ProgressBar
+                            x:Name="quiz_progress"
+                            Grid.Row="1"
+                            Height="8"
+                            Minimum="0"
+                            Maximum="10"
+                            Value="0"
+                            Background="#2A2A40"
+                            Foreground="#38BDF8"
+                            BorderBrush="Transparent"
+                            Margin="0,0,0,18"
+                        />
+
+                        <!-- Question area -->
+                        <StackPanel Grid.Row="2" x:Name="quiz_question_panel">
+
+                            <TextBlock
+                                x:Name="quiz_question_number"
+                                Text="Press Start to begin the quiz"
+                                FontSize="13"
+                                Foreground="#6B7280"
+                                Margin="0,0,0,8"
+                            />
+
+                            <TextBlock
+                                x:Name="quiz_question_text"
+                                TextWrapping="Wrap"
+                                FontSize="16"
+                                Foreground="White"
+                                FontFamily="Segoe UI"
+                                FontWeight="SemiBold"
+                                Margin="0,0,0,20"
+                                LineHeight="26"
+                            />
+
+                            <!-- Answer buttons -->
+                            <Button x:Name="quiz_btn_0" Height="44" Margin="0,0,0,8"
+                                    Click="quiz_answer_click" Tag="0" Visibility="Collapsed"
+                                    BorderThickness="1.5" Cursor="Hand">
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#38BDF8"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#12122A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}" Padding="14,8">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14"
+                                                       TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button x:Name="quiz_btn_1" Height="44" Margin="0,0,0,8"
+                                    Click="quiz_answer_click" Tag="1" Visibility="Collapsed"
+                                    BorderThickness="1.5" Cursor="Hand">
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#38BDF8"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#12122A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}" Padding="14,8">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14"
+                                                       TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button x:Name="quiz_btn_2" Height="44" Margin="0,0,0,8"
+                                    Click="quiz_answer_click" Tag="2" Visibility="Collapsed"
+                                    BorderThickness="1.5" Cursor="Hand">
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#38BDF8"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#12122A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}" Padding="14,8">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14"
+                                                       TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button x:Name="quiz_btn_3" Height="44" Margin="0,0,0,8"
+                                    Click="quiz_answer_click" Tag="3" Visibility="Collapsed"
+                                    BorderThickness="1.5" Cursor="Hand">
+                                <Button.BorderBrush>
+                                    <SolidColorBrush Color="#38BDF8"/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <SolidColorBrush Color="#12122A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}" Padding="14,8">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14"
+                                                       TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </StackPanel>
+                        <!-- end of question area -->
+
+                        <!-- Feedback border -->
+                        <Border
+                            x:Name="quiz_feedback_border"
+                            Grid.Row="3"
+                            CornerRadius="12"
+                            Background="#12122A"
+                            BorderBrush="#38BDF8"
+                            BorderThickness="1"
+                            Padding="14,10"
+                            Margin="0,8,0,0"
+                            Visibility="Collapsed"
+                            >
+                            <TextBlock
+                                x:Name="quiz_feedback_text"
+                                TextWrapping="Wrap"
+                                FontSize="13"
+                                Foreground="#B8B8C5"
+                                FontFamily="Segoe UI"
+                            />
+                        </Border>
+
+                        <!-- Bottom buttons -->
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,14,0,0">
+
+                            <Button
+                                Content="▶  Start / Restart Quiz"
+                                Width="200" Height="42"
+                                Margin="0,0,12,0"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="start_quiz_click"
+                                >
+                                <Button.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#1E3A8A" Offset="0"/>
+                                        <GradientStop Color="#38BDF8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="12" Background="{TemplateBinding Background}">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button
+                                x:Name="quiz_next_btn"
+                                Content="Next ▶"
+                                Width="120" Height="42"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="quiz_next_click"
+                                Visibility="Collapsed"
+                                >
+                                <Button.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#1E3A8A" Offset="0"/>
+                                        <GradientStop Color="#38BDF8" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="12" Background="{TemplateBinding Background}">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="14" FontWeight="SemiBold"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </StackPanel>
+                        <!-- end of bottom buttons -->
+
+                    </Grid>
+                    <!-- end of quiz content grid -->
+
+                </Border>
+                <!-- end of quiz border -->
+
+            </Grid>
+            <!-- end of quiz panel -->
+
+
+            <!-- ═══════════════════════════════════════════════════ -->
+            <!-- PANEL: ACTIVITY LOG - NEW FOR PART 3               -->
+            <!-- ═══════════════════════════════════════════════════ -->
+            <Grid
+                x:Name="panel_log"
+                Margin="0,55,0,0"
+                Visibility="Collapsed"
+                >
+                <!-- start of log panel -->
+
+                <Border
+                    Height="500"
+                    Width="880"
+                    CornerRadius="25"
+                    Background="#1a1a2e"
+                    BorderBrush="DeepSkyBlue"
+                    BorderThickness="2"
+                    Padding="20"
+                    >
+                    <!-- start of log border -->
+
+                    <Grid>
+                        <!-- start of log content grid -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Text="📜  Activity Log"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="DeepSkyBlue"
+                            FontFamily="Segoe UI"
+                            Margin="0,0,0,12"
+                        />
+
+                        <!-- Log ListView -->
+                        <ListView
+                            x:Name="log_list"
+                            Grid.Row="1"
+                            Background="#0B1235"
+                            BorderBrush="DeepSkyBlue"
+                            BorderThickness="1"
+                            Foreground="White"
+                            FontFamily="Segoe UI"
+                            FontSize="13"
+                        />
+
+                        <!-- Log action buttons -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0">
+
+                            <Button
+                                Content="🔄 Refresh Log"
+                                Width="150" Height="38"
+                                Margin="0,0,12,0"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="refresh_log_click"
+                                >
+                                <Button.Background>
+                                    <SolidColorBrush Color="#1E3A8A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                            <Button
+                                Content="🗑 Clear Log"
+                                Width="130" Height="38"
+                                BorderThickness="0"
+                                Cursor="Hand"
+                                Click="clear_log_click"
+                                >
+                                <Button.Background>
+                                    <SolidColorBrush Color="#1E3A8A"/>
+                                </Button.Background>
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}">
+                                            <TextBlock Text="{TemplateBinding Content}" Foreground="White"
+                                                       FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+
+                        </StackPanel>
+                        <!-- end of log action buttons -->
+
+                    </Grid>
+                    <!-- end of log content grid -->
+
+                </Border>
+                <!-- end of log border -->
+
+            </Grid>
+            <!-- end of log panel -->
+
+        </Grid>
+        <!-- end of chatting grid -->
+
     </Grid>
+    <!-- End of Parent Grid -->
 </Window>
