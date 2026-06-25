@@ -110,8 +110,11 @@
     <Compile Include="interest_manager.cs" />
     <Compile Include="message_display.cs" />
     <Compile Include="quiz_manager.cs" />
+    <Compile Include="respond.cs" />
     <Compile Include="special_character.cs" />
+    <Compile Include="task_manager.cs" />
     <Compile Include="user_name.cs" />
+    <Compile Include="voice_greet.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
