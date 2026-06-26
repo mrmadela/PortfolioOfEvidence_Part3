@@ -40,6 +40,9 @@ namespace PortfolioOfEvidence_Part3
         string username = "";
 
 
+        // remembers the last task waiting for a reminder
+        private string pendingReminderTask = "";
+
         // quiz manager object
         quiz_manager quiz;
 
@@ -220,6 +223,21 @@ namespace PortfolioOfEvidence_Part3
 
             }// end of if statement
 
+            // user is answering the reminder question
+            if (!string.IsNullOrWhiteSpace(pendingReminderTask))
+            {// start of if statement
+                if (rawQuestion.ToLower().Contains("yes"))
+                {// start of if statement
+                    message_display.show(
+                        chats,
+                        "ChatBot",
+                        "Great! Tell me when you would like to be reminded.\nExample:\nTomorrow at 3 PM"
+                    );
+                    // wait for the next input to set the reminder
+                    return;
+                }// end of if statemt
+            }// end of if statement
+
             // display user message in the chat area
             message_display.show(chats, username, rawQuestion);
 
@@ -280,6 +298,9 @@ namespace PortfolioOfEvidence_Part3
             string title = string.IsNullOrWhiteSpace(nlp.ExtractedText)
                            ? "New cybersecurity task"
                            : nlp.ExtractedText;
+            
+            // remember the last task waiting for a reminder
+            pendingReminderTask = title;
 
             bool ok = task_manager.quick_add_task(title);
 
@@ -313,9 +334,10 @@ namespace PortfolioOfEvidence_Part3
         private void handle_nlp_reminder(NlpResult nlp)
         {// start of handle_nlp_reminder method
 
-            string taskText = string.IsNullOrWhiteSpace(nlp.ExtractedText)
-                                  ? "General reminder"
-                                  : nlp.ExtractedText;
+            string taskText = string.IsNullOrWhiteSpace(pendingReminderTask)
+                                ?
+                                nlp.ExtractedText
+                                : pendingReminderTask;
 
             string reminderTime = string.IsNullOrWhiteSpace(nlp.ReminderTime)
                                   ? "No specific time set"
@@ -439,6 +461,9 @@ namespace PortfolioOfEvidence_Part3
                         ? "."
                         : $" | Reminder: {reminder}.")
                 );
+
+                // clear pending reminder task
+                pendingReminderTask = "";
 
                 // clear input fields
                 task_title.Clear();
