@@ -508,8 +508,19 @@ namespace PortfolioOfEvidence_Part3
             }// end of if statement
 
             // get selected task
-            CyberTask selected = task_list.SelectedItem as CyberTask;
-            if (selected == null) return;
+            ListViewItem item = task_list.SelectedItem as ListViewItem;
+
+            if (item == null)
+            {
+                return;
+            }
+
+            CyberTask selected = item.Tag as CyberTask;
+
+            if (selected == null)
+            {
+                return;
+            }
 
             // check if already completed
             if (selected.IsCompleted)
@@ -558,8 +569,19 @@ namespace PortfolioOfEvidence_Part3
             }// end of if statement
 
             // get selected task
-            CyberTask selected = task_list.SelectedItem as CyberTask;
-            if (selected == null) return;
+            ListViewItem item = task_list.SelectedItem as ListViewItem;
+
+            if (item == null)
+            {
+                return;
+            }
+
+            CyberTask selected = item.Tag as CyberTask;
+
+            if (selected == null)
+            {
+                return;
+            }
 
             // confirm deletion
             MessageBoxResult confirm = MessageBox.Show(
@@ -645,7 +667,13 @@ namespace PortfolioOfEvidence_Part3
                 row.Child = tb;
 
                 // add CyberTask object so selection works
-                task_list.Items.Add(t);
+                ListViewItem item = new ListViewItem();
+
+                item.Content = row;
+
+                item.Tag = t;
+
+                task_list.Items.Add(item);
 
             }// end of foreach loop
 
